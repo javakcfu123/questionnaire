@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 引入配置的资源文件 -->
+	<properties resource="db.properties" />
+
+	<!-- 配置mybatis的运行方式 -->
+	<settings>
+		<!-- 配置使用log4j记录日志 -->
+		<setting name="logImpl" value="LOG4J" />
+		<!-- 允许插入空值 -->
+		<setting name="jdbcTypeForNull"  value="NULL"/>
+	</settings>
+
+	<!-- 配置实体类的别名 -->
+	<typeAliases>
+		<package name="com.javakc.questionnaire.vo" />
+	</typeAliases>
+
+
+	<!-- 对事务的管理和连接池的配置 -->
+	<!-- development:开发模式 work : 工作模式 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${name}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- mapping文件路径配置 -->
+	<mappers> 
+		<!-- 问卷 --> 
+		<mapper resource="com/javakc/questionnaire/vo/mapper/QuestionDao.xml" />
+		
+		<!-- 问卷题目 -->
+		<mapper resource="com/javakc/questionnaire/vo/mapper/SubjectDao.xml" />
+		
+		<!-- 问卷类型 -->
+		<mapper resource="com/javakc/questionnaire/vo/mapper/TypeDao.xml" />
+		
+	</mappers>
+	
+</configuration>

@@ -1,0 +1,15 @@
+.btn_small {
+	font-size: 12px;
+	height: 23px;
+	margin: 0px;
+	line-height: 0px;
+}
+.kc_text{
+	float: left;
+    display: block;
+    padding: 9px 15px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+    color: #666;
+}

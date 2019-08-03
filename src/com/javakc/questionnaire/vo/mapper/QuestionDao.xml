@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javakc.questionnaire.m10_question.dao.QuestionDao">
+	<sql id="condition">
+		<if test="qu_title!=null and qu_title!=''">AND q.qu_title like concat('%',#{qu_title},'%')</if>
+		<if test="type_id!=null and type_id!=''">AND q.type_id= #{type_id}</if>
+		<if test="state!=null and state!=''">AND q.state= #{state}</if>
+		
+		<if test="pub_scope!=null and pub_scope!=''">AND q.pub_scope= #{pub_scope}</if>
+		<if test="qu_style!=null and qu_style!=''">AND q.qu_style= #{qu_style}</if>
+		<if test="begin_date!=null and begin_date!=''">AND begin_date>=#{begin_date} </if>
+		<if test="end_date!=null and end_date!=''">AND #{end_date}>=begin_date </if>
+	</sql>
+
+	<select id="query" resultType="Map" parameterType="Map">
+		select q.*,t.type_name from qu_question q,qu_type t where q.type_id=t.type_id and q.state>0
+			<include refid="condition"></include>
+		limit #{fromNum},5
+
+	</select>
+
+	<select id="queryCount" resultType="int" parameterType="Map">
+		select count(1) from qu_question q where 1=1 
+		<include refid="condition"></include>
+	</select>
+
+	<insert id="insert" parameterType="Map">
+		insert into qu_question
+		(qu_id,qu_title,type_id,memo,qu_style,begin_date,end_date,pub_scope,creator_id,create_date)values
+		(#{qu_id},#{qu_title},#{type_id},#{memo},#{qu_style},
+		#{begin_date},#{end_date},#{pub_scope},#{creator_id},now())
+	</insert>
+
+	<select id="load" parameterType="String" resultType="Map">
+		select
+		qu_id,qu_title,type_id,begin_date,end_date,pub_scope,qu_style,creator_id,create_date,state,memo
+		from qu_question where qu_id=#{qu_id}
+	</select>
+
+	<update id="update" parameterType="Map">
+		update qu_question set
+		qu_title=#{qu_title},type_id=#{type_id},memo=#{memo},begin_date=#{begin_date},
+		end_date=#{end_date},pub_scope=#{pub_scope},qu_style=#{qu_style}
+		where qu_id=#{qu_id}
+	</update>
+
+
+	<update id="delete" parameterType="String">
+		update qu_question set state=0
+		where qu_id=#{qu_id}
+	</update>
+
+
+	<update id="deleteAll" parameterType="String">
+		update qu_question set state=0
+		<trim prefix="WHERE" prefixOverrides="OR">
+			<foreach item="item" index="index" collection="array">
+				or qu_id=#{item}
+			</foreach>
+		</trim>
+	</update>
+</mapper>

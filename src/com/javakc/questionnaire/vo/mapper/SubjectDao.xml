@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javakc.questionnaire.m11_subject.dao.SubjectDao">
+
+	<select id="query" resultType="Map" parameterType="Map">
+		select * from qu_subject where qu_id=#{qu_id} and state>0
+		<trim>
+			<if test="subject_title!=null and subject_title!=''">and subject_title like #{subject_title}</if>
+			<if test="subject_type!=null and subject_type!=''">and subject_type=#{subject_type}</if>
+			<if test="subject_score!=null and subject_score!=''">and subject_score=#{subject_score}</if>
+			<if test="subject_must!=null and subject_must!=''">and subject_must=#{subject_must}</if>
+			<if test="create_date!=null and create_date!=''">and create_date=#{create_date}</if>
+			<if test="creator_id!=null and creator_id!=''">creator_id=#{creator_id}</if>
+		</trim>
+		
+	</select>
+
+	<!-- 插入题目 -->
+	<insert id="insert" parameterType="Map">
+		insert into qu_subject(subject_id,qu_id,subject_title,subject_type,
+		subject_must,subject_score,subject_desc)
+		values( #{subject_id}, #{qu_id}, #{subject_title}, #{subject_type},
+		#{subject_must}, #{subject_score}, #{subject_desc})
+	</insert>
+	<!-- 插入题目选项 -->
+	<insert id="insertItem" parameterType="Map">
+		insert into qu_item
+		(item_id,subject_id,item_content,correct)values
+		(#{item_id},#{subject_id},#{item_content},#{correct})
+	</insert>
+	
+	<update id="update" parameterType="Map">
+		update qu_subject set subject_title=#{subject_title},subject_type=#{subject_type},
+		subject_must=#{subject_must},subject_score=#{subject_score},subject_desc=#{subject_desc}
+		where subject_id=#{subject_id}
+	</update>
+	
+	<update id="deleteItems" parameterType="String">
+		delete from qu_item  where subject_id=#{subject_id}
+	</update>
+	
+	<update id="delete" parameterType="String">
+		update qu_subject set state='0' where subject_id=#{subject_id}
+	</update>
+
+	
+	
+	<select id="load" parameterType="String" resultType="Map">
+		select * from qu_subject where subject_id=#{subject_id}
+	</select>
+	
+	<!-- 根据题目id，取得选项的信息 -->
+	<select id="getItemsBySubjectId" parameterType="String" resultType="Map">
+		select * from qu_item where subject_id=#{subject_id}
+	</select>
+
+
+	<update id="deleteAll" parameterType="String">
+		update qu_subject set state=0
+		<trim prefix="WHERE" prefixOverrides="OR">
+			<foreach item="item" index="index" collection="array">
+				or subject_id=#{item}
+			</foreach>
+		</trim>
+	</update>
+	
+	
+	<select id="previewAll" resultType="Map" parameterType="Map">
+	select *	from qu_subject  
+	<trim prefix="WHERE" prefixOverrides="OR">
+			<foreach item="item" index="index" collection="array">
+				or subject_id=#{item}
+			</foreach>
+		</trim>
+	</select>
+	<select id="previewAll2" resultType="Map" parameterType="Map">
+	select *	from qu_item  
+	<trim prefix="WHERE" prefixOverrides="OR">
+			<foreach item="item" index="index" collection="array">
+				or subject_id=#{item}
+			</foreach>
+		</trim>
+	</select>
+
+</mapper>
