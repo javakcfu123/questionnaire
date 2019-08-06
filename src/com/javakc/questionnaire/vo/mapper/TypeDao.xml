@@ -47,6 +47,10 @@
 		update_date=now()
 		where type_id=#{type_id}
 	</update>
+	
+	<update id="delete" parameterType="String">
+		update qu_type set state=0 where type_id=#{type_id}
+	</update>
 
 	<!--查询类型名是否重复  -->
 	<select id="queryName" resultType="int" parameterType="String">

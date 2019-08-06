@@ -26,5 +26,7 @@ public interface TypeDao {
 
 	public void update(Map<String,Object> map);
 	
+	public void delete(String type_id);
+	
 	public int queryName(String type_name);
 }

@@ -26,7 +26,7 @@
 				</label>
 				<div class="layui-input-inline">
 					<input type="text" id="type_name" name="type_name" required
-						lay-verify="required" autocomplete="off" class="layui-input"
+						lay-verify="type_name" autocomplete="off" class="layui-input"
 						value="${requestScope.map.type_name }">
 				</div>
 			</div>

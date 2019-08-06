@@ -19,7 +19,7 @@
 				</label>
 				<div class="layui-input-inline">
 					<input type="text" id="type_name" name="type_name" required
-						lay-verify="qu_title" autocomplete="off" class="layui-input" value="生活">
+						lay-verify="type_name" autocomplete="off" class="layui-input" value="生活">
 				</div>
 			</div>
 

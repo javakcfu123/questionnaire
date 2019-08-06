@@ -16,9 +16,9 @@ layui.use('laydate', function() {
 function delType(obj, id) {
 	layer.confirm('确认要删除吗？', function(index) {
 		// jquery发异步删除数据
-		$.post('/Questionnaire/question.do', {
-			kc : 'toDelete',
-			qu_id : id
+		$.post('/Questionnaire/type.do', {
+			kc : 'delete',
+			type_id : id
 		}, function() {
 			layer.msg('已删除!', {
 				icon : 1,
@@ -52,7 +52,7 @@ function delAll(argument) {
 	//alert("data.join()"+data.join(","));
 	layer.confirm('确认要删除吗？', function(index) {
 		// 捉到所有被选中的，发异步进行删除
-		$.post('/Questionnaire/question.do', {
+		$.post('/Questionnaire/type.do', {
 			kc : 'deleteAll',
 			data : data.join(",")
 		}, function() {

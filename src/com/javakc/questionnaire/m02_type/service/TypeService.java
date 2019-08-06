@@ -65,7 +65,14 @@ public class TypeService{
 		session.close();
 		return list;
 	}
-
+	
+	public void delete(String type_id) {
+		SqlSession session = MybatisUtils.openSession(true);
+		TypeDao typeDao = session.getMapper(TypeDao.class);
+		typeDao.delete(type_id);
+		session.close();
+		
+	}
 	
 	public int queryName(String type_name) {
 		SqlSession session = MybatisUtils.openSession();

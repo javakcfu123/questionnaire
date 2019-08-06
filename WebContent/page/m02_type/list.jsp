@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.util.*"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,8 +27,8 @@
 					autocomplete="off" class="layui-input" value="${param.type_name }">
 				<input type="text" name="creator_id" placeholder="创建人"
 					autocomplete="off" class="layui-input"  value="${param.creator_id }"> 
-				<input class="layui-input" placeholder="创建开始日期" name="start" id="start" value="${param.start }">
-				<input class="layui-input" placeholder="创建结束日期" name="end" id="end" value="${param.end }">
+				<input class="layui-input" placeholder="创建开始日期" name="start" id="start" value="${param.start }" autocomplete="off">
+				<input class="layui-input" placeholder="创建结束日期" name="end" id="end" value="${param.end }" autocomplete="off">
 				
 				<button class="layui-btn" lay-submit="" lay-filter="sreach">
 					<i class="layui-icon">&#xe615;</i>
@@ -67,6 +67,7 @@
 			</thead>
 			<tbody>
 				<!-- jstl 循环标签  + EL表达式   代替Java脚本-->
+				<!-- requestScope:request.getAttribute("") -->
 				<c:forEach var="map" items="${requestScope.list}" >
 				<tr>
 					<td>
@@ -81,7 +82,7 @@
 					<td>${map.update_date}</td>
 					<td>${map.update_id}</td>
 					<td class="td-manage"><a title="修改"
-						onclick="x_admin_show('修改问卷','<%=request.getContextPath()%>/type.do?kc=toUpdate&type_id=${map.type_id}')"
+						onclick="x_admin_show('修改问卷类型','<%=request.getContextPath()%>/type.do?kc=toUpdate&type_id=${map.type_id}')"
 						href="#"> <i class="layui-icon">&#xe63c;</i>
 					</a> 
 					<a title="删除" onclick="delType(this,'${map.type_id}');"

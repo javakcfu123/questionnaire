@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.javakc.questionnaire.m02_type.service.TypeService;
+import com.javakc.questionnaire.util.Tools;
 
 /**
  * 问卷 - 表现层
@@ -44,7 +45,7 @@ public class TypeServlet extends HttpServlet {
 				
 			}else {
 				//类型id
-				String id=UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
+				String id=Tools.getUUID();
 				map.put("type_id", id);
 				
 				//当前登录人
@@ -80,6 +81,13 @@ public class TypeServlet extends HttpServlet {
 			
 			typeService.update(map);
 			
+		}else if("delete".equals(kc)) {
+			String type_id=request.getParameter("type_id");
+			
+	    	//删除
+			typeService.delete(type_id);
+			
+			
 		}else if("init_type".equals(kc)) {
 	    	//查询类型数据
 			List<Map> typeList=typeService.queryAll(null);
@@ -110,7 +118,6 @@ public class TypeServlet extends HttpServlet {
 				page=Integer.valueOf(pageStr);
 			}
 			map.put("fromNum", (page-1)*5);
-			map.put("endNum", page*5);
 			
 			
 			List<Map> list=typeService.query(map);
