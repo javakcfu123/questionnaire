@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.javakc.questionnaire.m02_type.service.TypeService;
-import com.javakc.questionnaire.util.Tools;
+import com.javakc.questionnaire.util.tools.Tools;
 
 /**
  * Œ æÌ - ±Ìœ÷≤„

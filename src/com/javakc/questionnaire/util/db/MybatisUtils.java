@@ -1,4 +1,4 @@
-package com.javakc.questionnaire.util;
+package com.javakc.questionnaire.util.db;
 
 import java.io.IOException;
 import java.io.InputStream;

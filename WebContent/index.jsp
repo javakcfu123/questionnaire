@@ -81,6 +81,7 @@
 						<cite>问卷管理</cite> <i class="iconfont nav_right">&#xe6a7;</i>
 				</a>
 					<ul class="sub-menu">
+						<li><a _href="user.do"><i class="iconfont">&#xe6a7;</i><cite>用户管理</cite></a></li>
 						<li><a _href="type.do"><i class="iconfont">&#xe6a7;</i><cite>问卷类型</cite></a></li>
 						<li><a _href="question.do"><i class="iconfont">&#xe6a7;</i><cite>问卷列表</cite></a></li>
 					</ul>

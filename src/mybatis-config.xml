@@ -34,6 +34,9 @@
 
 	<!-- mapping文件路径配置 -->
 	<mappers> 
+		<!-- 用户管理 -->
+		<mapper resource="com/javakc/questionnaire/vo/mapper/UserDao.xml" />
+		
 		<!-- 问卷类型 -->
 		<mapper resource="com/javakc/questionnaire/vo/mapper/TypeDao.xml" />
 		

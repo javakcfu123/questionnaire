@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.javakc.questionnaire.m10_question.dao.QuestionDao;
-import com.javakc.questionnaire.util.MybatisUtils;
+import com.javakc.questionnaire.util.db.MybatisUtils;
 /**
  * ÎÊ¾í - Âß¼­²ã - ÊµÏÖ
  * @author baker

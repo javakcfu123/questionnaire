@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.javakc.questionnaire.m02_type.dao.TypeDao;
 import com.javakc.questionnaire.m02_type.service.TypeService;
-import com.javakc.questionnaire.util.MybatisUtils;
+import com.javakc.questionnaire.util.db.MybatisUtils;
 /**
  * 基础数据-问卷类型 - 逻辑层
  * @author baker

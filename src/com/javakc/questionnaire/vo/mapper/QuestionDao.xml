@@ -21,7 +21,7 @@
 	</select>
 
 	<select id="queryCount" resultType="int" parameterType="Map">
-		select count(1) from qu_question q where 1=1 
+		select count(1) from qu_question q where state>0
 		<include refid="condition"></include>
 	</select>
 

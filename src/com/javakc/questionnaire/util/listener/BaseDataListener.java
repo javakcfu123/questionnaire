@@ -11,37 +11,33 @@ import com.javakc.questionnaire.m02_type.service.TypeService;
 
 /**
  * Application Lifecycle Listener implementation class BaseDataListener
- *
+ * web应用的监听器，
  */
 @WebListener
 public class BaseDataListener implements ServletContextListener {
-
-    /**
-     * Default constructor. 
-     */
-    public BaseDataListener() {
-        // TODO Auto-generated constructor stub
-    }
-
 	/**
-     * @see ServletContextListener#contextDestroyed(ServletContextEvent)
+     * web应用启动时，执行此方法
+     */
+    public void contextInitialized(ServletContextEvent sce)  { 
+    	//取得逻辑层api
+    	TypeService typeService=new TypeService();
+    	
+    	//调用逻辑层查询类型数据
+		List<Map> typeList=typeService.queryAll(null);
+		
+		//将查询到的数据，存储在SevletContext范围（整个web应用内共享数据）
+		sce.getServletContext().setAttribute("typeList", typeList);
+    	
+    	
+    }
+    
+	/**
+     * web应用销毁时，执行此方法
      */
     public void contextDestroyed(ServletContextEvent sce)  { 
          // TODO Auto-generated method stub
     }
 
-	/**
-     * @see ServletContextListener#contextInitialized(ServletContextEvent)
-     */
-    public void contextInitialized(ServletContextEvent sce)  { 
-    	
-    	TypeService typeService=new TypeService();
-    	//查询类型数据
-		List<Map> typeList=typeService.queryAll(null);
-		
-		sce.getServletContext().setAttribute("typeList", typeList);
-    	
-    	
-    }
+	
 	
 }

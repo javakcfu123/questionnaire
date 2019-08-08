@@ -30,7 +30,7 @@ $(function(){
 	// document.getElementById("maxPage").innerText=maxPage;
 	var html = "";
 
-	var n = page - 1;
+	var n = page - 2;
 	if (n <= 0) {
 		n = 1
 	}

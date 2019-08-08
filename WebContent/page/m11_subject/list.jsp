@@ -70,7 +70,7 @@
 			<i class="layui-icon"></i>添加
 		</a>
 		
-		<a class="layui-btn"   onclick="previewAll()">
+		<a class="layui-btn"   onclick="x_admin_show('预览问卷','<%=request.getContextPath() %>/page/m11_subject/previewAll.jsp')">
 			<i class="layui-icon"></i>预览
 		</a>
 		

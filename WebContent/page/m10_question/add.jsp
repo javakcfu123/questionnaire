@@ -31,6 +31,7 @@
 				</label>
 				<div class="layui-input-inline">
 					<select id="shipping" name="type_id" class="valid">
+						<!--在ServletContext范围取得问卷类型列表typeList，循环展示  -->
 						<c:forEach var="map" items="${applicationScope.typeList }">
 							<option value="${map.type_id }">${map.type_name }</option>
 						</c:forEach>

@@ -1,4 +1,4 @@
-package com.javakc.questionnaire.util;
+package com.javakc.questionnaire.util.tools;
 
 import java.util.UUID;
 

@@ -8,4 +8,4 @@
 </div>
 <input type="hidden" name="page" id="page" value="<%=request.getAttribute("page")%>"/>
 <input type="hidden" name="count" id="count" value="${requestScope.count }"/>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/page.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/page.js?v=${v}"></script>

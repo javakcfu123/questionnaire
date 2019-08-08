@@ -7,8 +7,8 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.javakc.questionnaire.m11_subject.dao.SubjectDao;
-import com.javakc.questionnaire.util.MybatisUtils;
-import com.javakc.questionnaire.util.Tools;
+import com.javakc.questionnaire.util.db.MybatisUtils;
+import com.javakc.questionnaire.util.tools.Tools;
 
 public class SubjectService {
 
