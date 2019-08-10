@@ -6,7 +6,6 @@
 		select user_id,user_name from data_user where state>0 and
 		login_name=#{login_name}
 		and login_pass=#{login_pass}
-		<include refid="condition"></include>
 	</select>
 
 </mapper>

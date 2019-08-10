@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javakc.questionnaire.m30_answer.dao.AnswerDao">
+
+	
+	
+	<insert id="insertWriter" parameterType="Map">
+		insert into qu_writer
+		(writer_id,question_id,write_name,write_phone,write_date) values
+		(#{writer_id},#{question_id},#{write_name},#{write_phone},now())
+	</insert>
+	
+	<insert id="insertAnswer" parameterType="Map">
+		insert into qu_answer
+		(answer_id,writer_id,subject_id,content) values
+		(#{answer_id},#{writer_id},#{subject_id},#{content})
+	</insert>
+	
+	<insert id="insertItem" parameterType="Map">
+		insert into qu_answer_item
+		(answer_item_id,answer_id,item_id) values
+		(#{answer_item_id},#{answer_id},#{item_id})
+	</insert>
+
+
+
+
+</mapper>

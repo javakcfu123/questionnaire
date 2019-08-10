@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javakc.questionnaire.m11_subject.dao.QuestionQueryDao">
+	
+	<select id="query" resultMap="SubjectResult">
+		 select * from 
+			(select * from qu_subject where state>0 and qu_id=#{qu_id}) s 
+			left join qu_item i on s.subject_id=i.subject_id
+	</select>
+
+	<resultMap type="SubjectEntity" id="SubjectResult">
+	    <id property="subject_id" column="subject_id" />
+		<result property="qu_id" column="qu_id" />
+		<result property="subject_title" column="subject_title" />
+		<result property="subject_type" column="subject_type" />
+		<result property="subject_score" column="subject_score" />
+		<result property="subject_must" column="subject_must" />
+		<result property="subject_desc" column="subject_desc" />
+
+		<collection property="items" ofType="ItemEntity">
+			<id property="item_id" column="item_id"></id>
+			<result property="item_content" column="item_content" />
+
+		</collection>
+	</resultMap>
+
+</mapper>

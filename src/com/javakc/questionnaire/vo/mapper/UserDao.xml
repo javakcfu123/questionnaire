@@ -2,13 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javakc.questionnaire.m01_user.dao.UserDao">
 
-	<select id="login" resultType="Map" parameterType="Map">
-		select user_name from data_user where state>0 and
-		login_name=#{login_name}
-		and login_pass=#{login_pass}
-		<include refid="condition"></include>
-	</select>
-
 	<sql id="condition">
 		<if test="user_name!=null and user_name!=''">AND user_name like concat('%',#{user_name},'%')</if>
 		<if test="user_phone!=null and user_phone!=''">AND user_phone like concat('%',#{user_phone},'%') </if>

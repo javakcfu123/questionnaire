@@ -76,6 +76,10 @@
 			onclick="x_admin_show('添加问卷','./page/m10_question/add.jsp')">
 			<i class="icon iconfont">&#xe6b9;</i> 添加
 		</a>
+		<a class="layui-btn layui-btn-warm"
+			onclick="publish()">
+			<i class="icon iconfont">&#xe6c0;</i> 发布
+		</a>
 		<span class="x-right" style="line-height: 40px">共有数据：${requestScope.count }条</span> </xblock>
 		<table class="layui-table">
 			<thead>
@@ -107,7 +111,12 @@
 							<i class="layui-icon">&#xe605;</i>
 						</div>
 					</td>
-					<td>${map.qu_title}</td>
+					
+					<td>
+						<a href="javascript:x_admin_show('预览问卷','<%=request.getContextPath() %>/questionQuery.do?kc=viewQuestion&qu_id=${map.qu_id }')">
+							${map.qu_title}
+						</a>
+					</td>
 					<td>${map.type_name}</td>
 					<td>${map.begin_date}-${map.end_date}</td>
 					<td>${map.pub_scope}</td>

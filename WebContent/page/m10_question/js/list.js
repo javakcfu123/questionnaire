@@ -71,3 +71,33 @@ function delAll(argument) {
 	});
 
 }
+
+//发布问卷
+function publish(argument) {
+	//选择的复选框
+	var data = tableCheck.getData();
+	if(data.length!=1){
+		layer.alert("一次只能发布一个问卷", {
+			icon : 6,
+			time:1000
+		}, function() {
+			
+		});
+		return;
+	}
+	//alert(data);
+	//alert("data.join()"+data.join(","));
+	if(data!=null&&data!=""){layer.confirm('确认要发布吗？', function(index) {
+		// 捉到所有被选中的，发异步请求进行删除
+		$.post('/Questionnaire/question.do', {
+			kc : 'publish',
+			data : data.join(",")
+		}, function() {
+			//关闭弹框
+			layer.close(layer.index);
+			//弹出新框
+			x_admin_show('已发布','page/m10_question/publish.jsp?qu_id='+data);
+			
+		});
+	});}
+}

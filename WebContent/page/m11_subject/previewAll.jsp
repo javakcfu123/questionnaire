@@ -12,10 +12,10 @@
 <body>
 	<fieldset class="layui-elem-field layui-field-title"
 		style="margin-top: 30px;">
-		<legend>垃圾分类自测题</legend>
+		<legend>${requestScope.questionMap.qu_title }</legend>
 	</fieldset>
 	<p class="layui-table-cell">
-	文明你我他，分类靠大家。考前提示：“湿垃圾”——猪能吃的“干垃圾”——猪都不要吃的“有害垃圾”——猪吃了能死的“可回收物”——卖了钱可以买猪的
+		${requestScope.questionMap.memo }
 	</p>
                 
                 
@@ -23,42 +23,35 @@
 
 		<div class="layui-row layui-col-space15">
 
-			<div class="layui-col-md12">
-				<div class="layui-card layui-form">
-					<div class="layui-card-header">Q1：以下哪些属于湿垃圾？</div>
-					<div class="layui-card-body">
-						<input type="radio" name="Q1">奶油
-					</div>
-					<div class="layui-card-body">
-						<input type="radio" name="Q1">番茄酱
-					</div>
-					<div class="layui-card-body">
-						<input type="radio" name="Q1">笋皮
-					</div>
-					<div class="layui-card-body">
-						<input type="radio" name="Q1">大骨头
+			<c:forEach var="subject" items="${requestScope.list }" varStatus="abc">
+
+				<div class="layui-col-md12">
+					<div class="layui-card layui-form">
+						<div class="layui-card-header">Q${abc.count}：${subject.subject_title }【${subject.subject_type }】</div>
+						
+						<c:forEach var="item" items="${subject.items }" >
+						
+							<div class="layui-card-body">
+							
+								<c:if test="${subject.subject_type=='单选'}">
+								<input type="radio" name="${subject.subject_id }">
+								</c:if>
+								<c:if test="${subject.subject_type=='多选'}">
+								<input type="checkbox" lay-skin="primary">
+								</c:if>
+								${item.item_content }
+							</div>
+						</c:forEach>
+						<c:if test="${subject.subject_type=='简答'}">
+						<textarea class="layui-textarea"></textarea>
+						</c:if>
 					</div>
 				</div>
-			</div>
+			
+			</c:forEach>
+			
 
-			<div class="layui-col-md12">
-				<div class="layui-card layui-form">
-					<div class="layui-card-header">Q2：以下哪些属于可回收物？</div>
-					<div class="layui-card-body">
-						<input type="checkbox" lay-skin="primary">贝壳
-					</div>
-					<div class="layui-card-body">
-						<input type="checkbox" lay-skin="primary">砧板
-					</div>
-					<div class="layui-card-body">
-						<input type="checkbox" lay-skin="primary">旧玩偶
-					</div>
-					<div class="layui-card-body">
-						<input type="checkbox" lay-skin="primary">挂锁
-					</div>
-
-				</div>
-			</div>
+			
 		</div>
 	</div>
 	

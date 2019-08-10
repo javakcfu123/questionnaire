@@ -39,7 +39,8 @@ layui.use([ 'form', 'layer' ], function() {
 		// （url请求的路径,数据，成功后执行的函数）
 		$.post(document.forms[0].action, data.field, function() {
 			layer.alert("增加成功", {
-				icon : 6
+				icon : 6,
+				time:1000
 			}, function() {
 				// 父窗口重现加载
 				window.parent.location.reload();

@@ -86,6 +86,10 @@ public class QuestionServlet extends HttpServlet {
 				questionService.deleteAll(ids);
 			}
 			
+		}else if("publish".equals(kc)){
+			//发布问卷
+			
+			
 		}else {
 			//得到查询条件
 			String  qu_title=request.getParameter("qu_title");

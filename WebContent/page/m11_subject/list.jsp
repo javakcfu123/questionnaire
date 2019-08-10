@@ -70,8 +70,8 @@
 			<i class="layui-icon"></i>添加
 		</a>
 		
-		<a class="layui-btn"   onclick="x_admin_show('预览问卷','<%=request.getContextPath() %>/page/m11_subject/previewAll.jsp')">
-			<i class="layui-icon"></i>预览
+		<a class="layui-btn"   onclick="x_admin_show('预览问卷','<%=request.getContextPath() %>/questionQuery.do?kc=viewQuestion&qu_id=${requestScope.qu_id }')">
+			<i class="icon iconfont"> &#xe6a2; </i>预览
 		</a>
 		
 		<span class="x-right" style="line-height: 40px">共有数据：<%=request.getAttribute("count") %></span>

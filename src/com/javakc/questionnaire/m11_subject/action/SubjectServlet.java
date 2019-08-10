@@ -132,14 +132,19 @@ public class SubjectServlet extends HttpServlet {
 			
 			
 		}else if("previewAll".equals(kc)) {
+			
+			
 			String data=request.getParameter("data");
 			String[] ids=data.split(",");
 			List<Map> query = subjectService.previewAll(ids);
 			List<Map> queryItem = subjectService.previewAll2(ids);
 			request.setAttribute("query", query);
 			request.setAttribute("queryItem", queryItem);
-			request.getRequestDispatcher("page/m11_subject/preview.jsp").forward(request, response);	
-			}else {
+			request.getRequestDispatcher("page/m11_subject/preview.jsp").forward(request, response);
+			
+			
+			
+		}else {
 
 			int page = 1;
 			int fromNum = (page - 1) * 5;

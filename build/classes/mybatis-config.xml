@@ -37,6 +37,9 @@
 		<!-- 用户管理 -->
 		<mapper resource="com/javakc/questionnaire/vo/mapper/UserDao.xml" />
 		
+		<!-- 登录管理 -->
+		<mapper resource="com/javakc/questionnaire/vo/mapper/LoginDao.xml" />
+		
 		<!-- 问卷类型 -->
 		<mapper resource="com/javakc/questionnaire/vo/mapper/TypeDao.xml" />
 		
@@ -45,6 +48,12 @@
 		
 		<!-- 问卷题目 -->
 		<mapper resource="com/javakc/questionnaire/vo/mapper/SubjectDao.xml" />
+		
+		<!-- 查询问卷题目 -->
+		<mapper resource="com/javakc/questionnaire/vo/mapper/QuestionQueryDao.xml" />
+		
+		<!-- 问卷实例 -->
+		<mapper resource="com/javakc/questionnaire/vo/mapper/AnswerDao.xml" />
 		
 		
 		
